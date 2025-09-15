@@ -1,16 +1,16 @@
-title:              Clean Blog
-email:              your-email@example.com
-description:        A Blog Theme by Start Bootstrap
+title:              Daniil Azarov
+email:              azarov.dj@gmail.com
+description:        This a personal website of Daniil Azarov
 author:             Start Bootstrap
 baseurl:            ""
 url:                "https://DaniilAzarov123.github.io"
 
 # Social Profiles
-twitter_username:   SBootstrap
-github_username:    StartBootstrap
-facebook_username:  StartBootstrap
-instagram_username:  
-linkedin_username:
+twitter_username:   
+github_username:    DaniilAzarov123
+facebook_username:  
+instagram_username: danil_azarov_ 
+linkedin_username: www.linkedin.com/in/daniil-azarov-998584355
 
 # Add your google-analytics ID here to activate google analytics
 google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
