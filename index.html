@@ -11,11 +11,18 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Navigation */
@@ -54,6 +61,7 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 3rem 2rem;
+            flex: 1;
         }
 
         /* Home Page */
@@ -79,10 +87,20 @@
             margin-bottom: 0.5rem;
         }
 
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
+        .cv-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background-color: #2c3e50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+        }
+
+        .cv-link:hover {
+            background-color: #34495e;
         }
 
         .bio {
@@ -95,9 +113,9 @@
         /* Social Links */
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             justify-content: center;
-            margin-top: 1rem;
+            align-items: center;
         }
 
         .social-links a {
@@ -112,8 +130,32 @@
         }
 
         .social-links svg {
-            width: 32px;
-            height: 32px;
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Footer with social links */
+        footer {
+            background-color: #2c3e50;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        footer .social-links {
+            gap: 2.5rem;
+        }
+
+        footer .social-links a {
+            color: #fff;
+        }
+
+        footer .social-links a:hover {
+            color: #3498db;
+        }
+
+        footer .social-links svg {
+            width: 48px;
+            height: 48px;
         }
 
         /* Publications Page */
@@ -142,7 +184,7 @@
             padding: 1rem;
             background-color: #f8f9fa;
             border-radius: 6px;
-            border-left: 4px solid #2c3e50;
+            border-left: 4px solid #3498db;
         }
 
         .publication-citation {
@@ -165,38 +207,6 @@
 
         .publication-links a:hover {
             text-decoration: underline;
-        }
-
-        /* CV Page */
-        .cv-container {
-            text-align: center;
-        }
-
-        .cv-container h2 {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-        }
-
-        .cv-embed {
-            width: 100%;
-            height: 900px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-        }
-
-        .cv-download {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.75rem 1.5rem;
-            background-color: #2c3e50;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .cv-download:hover {
-            background-color: #34495e;
         }
 
         /* Projects Page */
@@ -274,8 +284,22 @@
                 padding: 0.4rem 0.8rem;
             }
 
-            .cv-embed {
-                height: 600px;
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .social-links svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            footer .social-links {
+                gap: 2rem;
+            }
+
+            footer .social-links svg {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -284,9 +308,8 @@
     <nav>
         <ul>
             <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
-            <li><a href="#publications" class="nav-link" data-page="publications">Publications</a></li>
-            <li><a href="#cv" class="nav-link" data-page="cv">CV</a></li>
             <li><a href="#projects" class="nav-link" data-page="projects">Projects</a></li>
+            <li><a href="#publications" class="nav-link" data-page="publications">Publications</a></li>
         </ul>
     </nav>
 
@@ -297,85 +320,15 @@
                 <img src="assets/IMG_3589.jpeg" alt="Daniil Azarov" class="profile-photo">
                 <div>
                     <h1>Daniil Azarov</h1>
-                    <p class="subtitle">Dual Major Student in MS Applied Statistics and PhD Psychology at Indiana University</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/daniil-azarov-998584355" target="_blank" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=ydy_qdcAAAAJ&hl=ru" target="_blank" aria-label="Google Scholar">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/daniilazarov123" target="_blank" aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                    </div>
+                    <a href="assets/cv.pdf#page=1" class="cv-link" target="_blank" rel="noopener noreferrer" onclick="this.href='assets/cv.pdf#page=1&t=' + Date.now()">View CV</a>
                 </div>
                 <div class="bio">
-                    <p>I'm a dual-major graduate student in Applied Statistics & Psychology at Indiana University, Bloomington, with a strong focus on transitioning into data science. My research background includes machine learning, statistical modeling, and experimental methods applied to human memory, perception, and decision-making.</p>
+                    <p>I'm a dual-major graduate student in <b>Applied Statistics & Psychology</b> at Indiana University, Bloomington, with a strong focus on transitioning into <b>data science</b>. My research background includes machine learning, computational and statistical modeling, and experimental methods applied to human <b>memory, perception, and decision-making</b>.</p>
                     <br>
                     <p>I work primarily in Python and R, with experience in supervised learning, decision trees, boosting, resampling methods, model evaluation, simulation-based inference, and optimization techniques. I also use JavaScript for behavioral experiments (jsPsych).</p>
                     <br>
                     <p>I've authored peer-reviewed publications and presented at scientific conferences. I plan to pursue data science roles after completing my degree.</p>
                 </div>
-            </div>
-        </div>
-
-        <!-- Publications Page -->
-        <div id="publications" class="page">
-            <div class="publication-section">
-                <h2>Journal Publications</h2>
-                
-                <div class="year-group">
-                    <h3>2024</h3>
-
-                    <!-- paper 1 -->
-                    <div class="publication">
-                        <p class="publication-citation">
-                            Azarov, D., Grigorev, D., & Utochkin, I. (2024). A signal-detection account of item-based and ensemble-based visual change detection: A reply to Harrison, McMaster, and Bays. <em>Journal of Vision</em>, 24(2), 10-10. https://doi.org/10.1167/jov.24.2.10
-                        </p>
-                        <div class="publication-links">
-                            <a href="https://doi.org/10.1167/jov.24.2.10" target="_blank">[DOI]</a>
-                            <a href="assets/publications/2024 Azarov et al.pdf" target="_blank">[PDF]</a>
-                        </div>
-                    </div>
-                    <!-- paper 2 -->
-
-                </div>
-            </div>
-
-            <div class="publication-section">
-                <h2>Conference Proceedings & Abstracts</h2>
-                
-                <div class="year-group">
-                    <h3>2025</h3>
-                    <!-- abstract 1 -->
-                    <div class="publication">
-                        <p class="publication-citation">
-                            Azarov, D., Sanborn, A. N., Chater, N., & Goldstone, R. L. (2025). Reducing the Sampling Dependency Between Visual Numerosity Estimates Improves Aggregated Estimation Accuracy. <em>Journal of Vision</em>, 25(9), 1865-1865. https://doi.org/10.1167/jov.25.9.1865
-                        </p>
-                        <div class="publication-links">
-                            <a href="https://doi.org/10.1167/jov.25.9.1865" target="_blank">[DOI]</a>
-                        </div>
-                    </div>
-                    <!-- abstract 2 -->
-                </div>
-
-            </div>
-        </div>
-
-        <!-- CV Page -->
-        <div id="cv" class="page">
-            <div class="cv-container">
-                <h2>Curriculum Vitae</h2>
-                <embed src="assets/cv.pdf" type="application/pdf" class="cv-embed">
-                <br>
-                <a href="assets/cv.pdf" class="cv-download" download>Download CV (PDF)</a>
             </div>
         </div>
 
@@ -386,10 +339,13 @@
                 
                 <div class="project-card">
                     <h3>Visual Memorability Research</h3>
-                    <p>This project investigates the factors that make visual stimuli memorable, using machine learning approaches to predict and quantify memorability. We employ deep learning models trained on large-scale behavioral datasets to understand what visual features contribute to long-term memory retention. The work combines computational modeling with experimental psychology to bridge the gap between perception and memory systems.</p>
+                    <p>
+                        Surprisingly, despite individual differences, our visual memory is very consistent across people. Different individuals tend to remember the same objects with similar accuracy - if I remember this lamp well, you probably will too. People also show similar false memories: if it seems to me that I saw a chair when I didn't, it will likely seem that way to you as well.
+                        <br>
+                        My research explores how context, object similarity, and task conditions affect what we remember.
+                    </p>
                     <div class="project-links">
-                        <a href="https://github.com/daniilazarov123/memorability-project" target="_blank">[GitHub]</a>
-                        <a href="#publications">[Related Publications]</a>
+                        <a href="#publications">[See: Utochkin, Azarov, Grigorev (2025)]</a>
                     </div>
                 </div>
 
@@ -424,7 +380,146 @@
                 </div>
             </div>
         </div>
+
+        <!-- Publications Page -->
+        <div id="publications" class="page">
+
+            <div class="publication-section">
+                <h2>Current Work</h2>
+
+                <div class="year-group">
+                    <h3></h3>
+                    <!-- paper -->
+                    <div class="publication">
+                        <p class="publication-citation">
+                            Azarov, D., Nosofsky, R. M. (in prep). The roles of context and distinctiveness on memorability.
+                        </p>
+                    </div>
+                    <!-- paper-->
+                     <div class="publication">
+                        <p class="publication-citation">
+                            Azarov, D., Sanborn, A. N., Chater, N., & Goldstone, R. L. (in prep). Limits of the Wisdom of the Crowd: Evidence from Numerosity Estimation.
+                        </p>
+                    </div>
+                    <!-- paper-->
+                     <div class="publication">
+                        <p class="publication-citation">
+                            Azarov, D., Goyal, S., Wang, A., Goldstone, R. L., Nosofsky, R. M. (in prep). The effect of training variability on test performance.
+                        </p>
+                    </div>
+
+                </div>
+                
+            </div>
+
+
+            <div class="publication-section">
+                <h2>Journal Publications</h2>
+
+                <div class="year-group">
+                    <h3>2025</h3>
+
+                    <!-- paper -->
+                    <div class="publication">
+                        <p class="publication-citation">
+                            Utochkin, I., 	Azarov, D., & Grigorev, D. (in press). Invariant recognition memory spaces for real-world objects revealed with signal-detection analysis. <em>Psychological Science</em>.
+                        </p>
+                        <div class="publication-links">
+                            <a href="https://osf.io/preprints/psyarxiv/b8xtg_v2" target="_blank">[Preprint]</a>
+                        </div>
+                    </div>
+                    <!-- paper-->
+
+                </div>
+                
+                <div class="year-group">
+                    <h3>2024</h3>
+
+                    <!-- paper -->
+                    <div class="publication">
+                        <p class="publication-citation">
+                            Azarov, D., Grigorev, D., & Utochkin, I. (2024). A signal-detection account of item-based and ensemble-based visual change detection: A reply to Harrison, McMaster, and Bays. <em>Journal of Vision</em>, 24(2), 10-10. https://doi.org/10.1167/jov.24.2.10
+                        </p>
+                        <div class="publication-links">
+                            <a href="https://doi.org/10.1167/jov.24.2.10" target="_blank">[DOI]</a>
+                            <a href="assets/publications/2024 Azarov et al.pdf" target="_blank">[PDF]</a>
+                        </div>
+                    </div>
+                    <!-- paper-->
+
+                </div>
+            </div>
+
+            <div class="publication-section">
+                <h2>Conferences</h2>
+                
+                <div class="year-group">
+                    <h3>2025</h3>
+                    <!-- abstract -->
+                    <div class="publication">
+                        <p class="publication-citation">
+                            <b>Psychonomic Society</b>, Denver, Colorado, USA.
+                            <br>
+                            Azarov, D., Sanborn, A. N., Chater, N., & Goldstone, R. L.. Reducing the Sampling Dependency Between Visual Numerosity Estimates Improves Aggregated Estimation Accuracy; 2025, November. 
+                        </p>
+                    </div>
+
+                    <!-- abstract -->
+                    <div class="publication">
+                        <p class="publication-citation">
+                            <b>Vision Sciences Society</b>, St. Pete Beach, Florida, USA. 
+                            <br>
+                            Azarov, D., Sanborn, A. N., Chater, N., & Goldstone, R. L. (2025). Reducing the Sampling Dependency Between Visual Numerosity Estimates Improves Aggregated Estimation Accuracy. <em>Journal of Vision</em>, 25(9), 1865-1865. https://doi.org/10.1167/jov.25.9.1865
+                        </p>
+                        <div class="publication-links">
+                            <a href="https://doi.org/10.1167/jov.25.9.1865" target="_blank">[DOI]</a>
+                        </div>
+                    </div>
+                    <!-- abstract -->
+                </div>
+
+                <div class="year-group">
+                    <h3>2022</h3>
+                    <!-- abstract 1 -->
+                    <div class="publication">
+                        <p class="publication-citation">
+                            <b>Karl Duncker Summer Cognitive School</b>, Moscow, Russia. 
+                            <br>
+                            Azarov, D., Utochkin, I. (2022). Adaptation to a highly and barely variable ensembles causes the opposite effects.
+                        </p>
+                    </div>
+                    <!-- abstract 2 -->
+                </div>
+
+            </div>
+        </div>
     </div>
+
+    <!-- Footer with Social Links -->
+    <footer>
+        <div class="social-links">
+            <a href="mailto:azarov.dj@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/daniil-azarov-998584355" target="_blank" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+            </a>
+            <a href="https://scholar.google.com/citations?user=ydy_qdcAAAAJ&hl=ru" target="_blank" aria-label="Google Scholar">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/daniilazarov123" target="_blank" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
 
     <script>
         // Navigation functionality
@@ -434,6 +529,9 @@
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
+                
+                // Scroll to top immediately
+                window.scrollTo(0, 0);
                 
                 // Remove active class from all links and pages
                 navLinks.forEach(l => l.classList.remove('active'));
@@ -453,12 +551,21 @@
 
         // Handle initial page load with hash
         window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
             const hash = window.location.hash.substring(1);
             if (hash) {
                 const link = document.querySelector(`[data-page="${hash}"]`);
                 if (link) {
                     link.click();
                 }
+            }
+        });
+
+        // Force scroll to top on hash change, but not for external links
+        window.addEventListener('hashchange', (e) => {
+            // Only scroll if it's a page navigation, not a PDF link
+            if (!e.newURL.includes('assets/cv.pdf')) {
+                window.scrollTo(0, 0);
             }
         });
     </script>
